@@ -17,15 +17,16 @@
 
 ## 2. フロントエンド技術スタック
 
-### 2.1 フレームワーク選定: **Angular v20**
+### 2.1 フレームワーク選定: **Angular v20** (2025年5月リリース)
 
 #### 選定理由
 - **エンタープライズグレード**: 大規模アプリケーションに最適な構造
-- **完全なTypeScript統合**: ファーストクラスのTypeScriptサポート
+- **完全なTypeScript統合**: TypeScript 5.8必須、ファーストクラスのサポート
 - **包括的なフレームワーク**: ルーティング、フォーム、HTTPクライアント等が標準装備
 - **強力なCLI**: コード生成とプロジェクト管理の自動化
-- **RxJSの統合**: リアクティブプログラミングの強力なサポート
-- **Signals API**: 最新のリアクティブ状態管理
+- **Signals API (Stable)**: v20で安定版となったリアクティブ状態管理
+- **Zoneless Change Detection**: Developer Previewで利用可能な新しい変更検知
+- **Incremental Hydration**: v20で安定版、パフォーマンス向上
 
 #### 他の選択肢との比較
 | フレームワーク | メリット | デメリット | 採用判断 |
@@ -34,7 +35,7 @@
 | React | 柔軟性、大規模エコシステム | 追加ライブラリが必要 | ✗ |
 | Vue 3 | シンプル、段階的採用可能 | TypeScript統合がやや劣る | ✗ |
 
-### 2.2 UIコンポーネントライブラリ: **PrimeNG + Tailwind CSS**
+### 2.2 UIコンポーネントライブラリ: **PrimeNG v20 + Tailwind CSS v3.4**
 
 #### 選定理由
 - **PrimeNG**:
@@ -50,14 +51,15 @@
   - PrimeNGコンポーネントの細かいカスタマイズ
   - レスポンシブデザインの簡易実装
 
-### 2.3 状態管理: **NgRx (Signals)**
+### 2.3 状態管理: **NgRx v20 (SignalStore)**
 
 #### 選定理由
-- **予測可能な状態管理**: Reduxパターンの実装
+- **SignalStore成熟**: v20で本格的な状態管理ソリューションに
 - **Angular統合**: フレームワークとの完全な統合
-- **Signals対応**: Angular v17+の新機能活用
+- **Signals完全対応**: Angular v20の安定版Signals API活用
 - **DevTools**: 強力なデバッグツール
 - **エフェクト管理**: 副作用の明確な分離
+- **Zoneless対応**: Angular v20のZoneless変更検知に対応
 
 ## 3. バックエンド技術スタック
 
@@ -199,38 +201,41 @@
     "@angular/platform-browser": "^20.0.0",
     "@angular/platform-browser-dynamic": "^20.0.0",
     "@angular/router": "^20.0.0",
-    "typescript": "^5.6.0",
+    "typescript": "^5.8.0",
     
     // UI
-    "primeng": "^18.0.0",
+    "primeng": "^20.0.0",
+    "@primeuix/themes": "^20.0.0",
+    "@primeuix/styles": "^20.0.0",
     "primeicons": "^7.0.0",
     "tailwindcss": "^3.4.0",
     
     // State Management
-    "@ngrx/store": "^18.0.0",
-    "@ngrx/effects": "^18.0.0",
-    "@ngrx/entity": "^18.0.0",
+    "@ngrx/store": "^20.0.0",
+    "@ngrx/effects": "^20.0.0",
+    "@ngrx/entity": "^20.0.0",
+    "@ngrx/signals": "^20.0.0",
     
     // Backend
-    "express": "^4.18.0",
-    "socket.io": "^4.6.0",
-    "socket.io-client": "^4.6.0",
+    "express": "^4.21.0",
+    "socket.io": "^4.8.0",
+    "socket.io-client": "^4.8.0",
     
     // CLI
-    "commander": "^11.0.0",
-    "inquirer": "^9.2.0",
+    "commander": "^12.0.0",
+    "inquirer": "^10.0.0",
     
     // Utils
-    "lowdb": "^6.0.0",
+    "lowdb": "^7.0.0",
     "cosmiconfig": "^9.0.0",
     "rxjs": "^7.8.0",
-    "zone.js": "^0.14.0",
+    "zone.js": "^0.15.0",
     
     // Documentation & Diff
-    "marked": "^12.0.0",
-    "highlight.js": "^11.9.0",
-    "mermaid": "^10.0.0",
-    "monaco-editor": "^0.45.0",
+    "marked": "^14.0.0",
+    "highlight.js": "^11.10.0",
+    "mermaid": "^11.0.0",
+    "monaco-editor": "^0.52.0",
     "diff2html": "^3.4.0"
   },
   "devDependencies": {
@@ -241,10 +246,10 @@
     "vitest": "^2.0.0",
     "@vitest/ui": "^2.0.0",
     "@angular-vitest/builder": "^1.0.0",
-    "jsdom": "^24.0.0",
-    "@playwright/test": "^1.40.0",
-    "eslint": "^8.0.0",
-    "prettier": "^3.0.0",
+    "jsdom": "^25.0.0",
+    "@playwright/test": "^1.48.0",
+    "eslint": "^9.0.0",
+    "prettier": "^3.3.0",
     "stylelint": "^16.0.0"
   }
 }

@@ -18,7 +18,7 @@ graph TB
     
     subgraph "ローカルサーバー"
         Server[Express Server<br/>:3001]
-        NextApp[Next.js App<br/>:3000]
+        AngularApp[Angular App<br/>:4200]
         WS[WebSocket Server]
     end
     
@@ -27,8 +27,8 @@ graph TB
     end
     
     CLI --> Server
-    Browser --> NextApp
-    NextApp <--> Server
+    Browser --> AngularApp
+    AngularApp <--> Server
     Server <--> WS
     Server --> Claude
 ```
@@ -38,7 +38,8 @@ graph TB
 ### 2.1 プレゼンテーション層
 ```
 /packages/web/
-├── app/                    # Next.js App Router
+├── src/
+│   ├── app/                # Angular application
 │   ├── layout.tsx          # ルートレイアウト
 │   ├── page.tsx            # ホームページ
 │   ├── dashboard/          # ダッシュボード
@@ -299,7 +300,7 @@ ccvibedesign/
 ## 8. パフォーマンス設計
 
 ### 8.1 最適化戦略
-- **コード分割**: Next.jsの自動コード分割
+- **コード分割**: Angularの自動コード分割とLazy Loading
 - **遅延読み込み**: 動的インポートの活用
 - **キャッシング**: 生成結果のキャッシュ
 - **バッチ処理**: 複数リクエストの集約
